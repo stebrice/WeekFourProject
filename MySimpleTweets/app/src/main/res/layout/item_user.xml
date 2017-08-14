@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/general_padding"
+    >
+
+    <RelativeLayout
+        android:id="@+id/relLayoutToTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivProfileImageU"
+            android:layout_width="@dimen/profile_image_tweet_width"
+            android:layout_height="@dimen/profile_image_tweet_height"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/controls_margin"
+            app:srcCompat="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvUserNameU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/ivProfileImageU"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvScreenNameU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvUserNameU"
+            android:layout_below="@+id/tvUserNameU"
+            android:text="TextView"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvDescriptionU"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvUserNameU"
+            android:layout_below="@+id/tvScreenNameU"
+            android:text="TextView" />
+
+        <ToggleButton
+            android:id="@+id/tbFollow"
+            android:layout_width="@dimen/following_size"
+            android:layout_height="wrap_content"
+            android:background="@drawable/check"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="ToggleButton"
+            android:textOff=""
+            android:textOn=""
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+</LinearLayout>

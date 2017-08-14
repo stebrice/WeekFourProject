@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/divider_drawable"
+    android:showDividers="middle"
+    android:orientation="vertical"
+    tools:context="com.codepath.apps.mysimpletweets.activities.ProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/controls_margin">
+
+        <ImageView
+            android:id="@+id/ivProfileImageUP"
+            android:layout_width="@dimen/profile_image_tweet_width"
+            android:layout_height="@dimen/profile_image_tweet_height"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/controls_margin"
+            app:srcCompat="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvUserNameUP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/ivProfileImageUP"
+            android:text="TextView"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvBodyUP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvUserNameUP"
+            android:layout_below="@+id/tvUserNameUP"
+            android:text="TextView"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/general_padding"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFollowersUP"
+            android:text="X Followers"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="@dimen/general_padding"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFollowingUP"
+            android:textColor="@android:color/black"
+            android:text="Y Following"
+            android:textStyle="bold"
+            android:layout_marginRight="@dimen/controls_margin" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/controls_margin"
+        android:id="@+id/flUserTimeline">
+
+    </FrameLayout>
+
+
+</LinearLayout>

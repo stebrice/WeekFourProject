@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blueThemeBase">#00ddff</color>
+    <color name="accent_material_light">#0376b0</color>
+</resources>

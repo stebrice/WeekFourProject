@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/tvCreatedAtDt"
+    android:divider="@drawable/divider_drawable"
+    android:showDividers="middle"
+    tools:context="com.codepath.apps.mysimpletweets.activities.TweetDetailsActivity"
+    tools:showIn="@layout/activity_tweet_details"
+    android:padding="@dimen/controls_margin"
+    >
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivProfileImageDt"
+        android:layout_width="@dimen/profile_image_tweet_width"
+        android:layout_height="@dimen/profile_image_tweet_height"
+        tools:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvUserNameDt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/controls_margin"
+        android:layout_marginTop="@dimen/controls_margin"
+        android:layout_toEndOf="@+id/ivProfileImageDt"
+        android:textColor="@android:color/black"
+        tools:text="UserName" />
+
+    <TextView
+        android:id="@+id/tvScreenNameDt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ScreenName"
+        android:layout_below="@+id/tvUserNameDt"
+        android:layout_alignStart="@+id/tvUserNameDt" />
+
+    <TextView
+        android:id="@+id/tvBodyDt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivProfileImageDt"
+        android:layout_marginTop="@dimen/controls_margin"
+        android:textColor="@android:color/black"
+        android:autoLink="all"
+        android:linksClickable="true"
+        tools:text="Body Text" />
+
+    <TextView
+        android:id="@+id/tvCreatedAtDt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBodyDt"
+        tools:text="Created At" />
+
+</RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRetweetsDt"
+                android:text="X"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="@dimen/controls_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RETWEETS"
+                android:layout_marginRight="@dimen/general_padding" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvLikesDt"
+                android:textColor="@android:color/black"
+                android:text="Y"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/controls_margin" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIKES" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/ibReply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="replyToTweet"
+            android:src="@drawable/ic_reply" />
+        <ImageButton
+            android:id="@+id/ibRetweet"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="reTweet"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_retweet"
+            />
+        <ImageButton
+            android:id="@+id/ibLike"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="likeTweet"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_like"
+            />
+        <ImageButton
+            android:id="@+id/ibMessage"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_direct_message"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
