@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -283,20 +284,34 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 //Toast.makeText(getApplicationContext(),"SUCCESS!", Toast.LENGTH_LONG).show();
                 User userToUse = User.fromJSON(response);
                 Tweet newTweet = new Tweet("",0,null,"",0,0);
-                FragmentManager fm = ((TimelineActivity) mContext).getSupportFragmentManager();
-                Fragment currentFragment = fm.findFragmentById(R.id.viewpager);
-                ComposeFragment composeFragment = ComposeFragment.newInstance(userToUse, newTweet, tweetToUse);
-                if (currentFragment instanceof HomeTimelineFragment){
-                    composeFragment.setTargetFragment((HomeTimelineFragment) currentFragment, 300);
+                if (pActivity == null)
+                {
+                    FragmentManager fm = ((TimelineActivity) mContext).getSupportFragmentManager();
+                    ViewPager vpPager = (ViewPager) ((TimelineActivity) mContext).findViewById(R.id.viewpager);
+
+                    TimelineActivity.TweetsPagerAdapter tpAdapter = (TimelineActivity.TweetsPagerAdapter) vpPager.getAdapter();
+                    //Fragment currentFragment = tpAdapter.getRegisteredFragment(vpPager.getCurrentItem());
+                    Fragment currentFragment = tpAdapter.getRegisteredFragment(0);  //// set current fragment to first fragment;
+                    ComposeFragment composeFragment = ComposeFragment.newInstance(userToUse, newTweet, tweetToUse);
+                    if (currentFragment instanceof HomeTimelineFragment){
+                        composeFragment.setTargetFragment((HomeTimelineFragment) currentFragment, 300);
+                    }
+                    else if (currentFragment instanceof MentionsTimelineFragment){
+                        composeFragment.setTargetFragment((MentionsTimelineFragment) currentFragment, 300);
+                    }
+                    else if (currentFragment instanceof UserTimelineFragment){
+                        composeFragment.setTargetFragment((UserTimelineFragment) currentFragment, 300);
+                    }
+
+                    composeFragment.show(fm, "fragment_compose");
                 }
-                else if (currentFragment instanceof MentionsTimelineFragment){
-                    composeFragment.setTargetFragment((MentionsTimelineFragment) currentFragment, 300);
-                }
-                else if (currentFragment instanceof UserTimelineFragment){
-                    composeFragment.setTargetFragment((UserTimelineFragment) currentFragment, 300);
+                else{
+                    FragmentManager fm = pActivity.getSupportFragmentManager();
+                    ComposeFragment composeFragment = ComposeFragment.newInstance(userToUse, newTweet, tweetToUse);
+                    composeFragment.setTargetFragment((UserTimelineFragment) fm.getFragments().get(0), 300);
+                    composeFragment.show(fm, "fragment_compose");
                 }
 
-                composeFragment.show(fm, "fragment_compose");
                 //showUserProfile(userToUse);
             }
 

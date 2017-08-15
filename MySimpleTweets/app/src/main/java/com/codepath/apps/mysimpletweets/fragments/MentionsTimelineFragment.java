@@ -165,6 +165,7 @@ public class MentionsTimelineFragment extends TweetsListFragment implements Comp
     }
 
     private void populateTimelineFromMaxID(long maxToUse){
+        maxToUse = super.getMaxID();
         client.getMentionsTimelineFromMaxID(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -180,6 +181,7 @@ public class MentionsTimelineFragment extends TweetsListFragment implements Comp
     }
 
     private void populateTimelineFromSinceID(long sinceToUse){
+        sinceToUse = super.getSinceID();
         client.getMentionsTimelineFromSinceID(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -233,8 +235,11 @@ public class MentionsTimelineFragment extends TweetsListFragment implements Comp
 
     @Override
     public void onFinishComposeDialog(Tweet tweetDefined) {
-        if (tweetDefined.getUid() > 0)
+        if (tweetDefined.getUid() > 0){
             insertNewSingleItem(tweetDefined); //INSERT NEW TWEET AT CORRECT POSITION
+            sinceID = tweetDefined.getUid();
+            super.setSinceID(sinceID);
+        }
         return;
     }
 }

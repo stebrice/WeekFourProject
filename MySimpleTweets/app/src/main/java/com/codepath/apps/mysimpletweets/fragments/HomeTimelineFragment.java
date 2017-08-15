@@ -167,6 +167,7 @@ public class HomeTimelineFragment extends TweetsListFragment implements ComposeF
     }
 
     private void populateTimelineFromMaxID(long maxToUse){
+        maxToUse = super.getMaxID();
         client.getHomeTimelineFromMaxID(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -182,6 +183,7 @@ public class HomeTimelineFragment extends TweetsListFragment implements ComposeF
     }
 
     private void populateTimelineFromSinceID(long sinceToUse){
+        sinceToUse = super.getSinceID();
         client.getHomeTimelineFromSinceID(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -235,8 +237,12 @@ public class HomeTimelineFragment extends TweetsListFragment implements ComposeF
 
     @Override
     public void onFinishComposeDialog(Tweet tweetDefined) {
-        if (tweetDefined.getUid() > 0)
+        if (tweetDefined.getUid() > 0){
             insertNewSingleItem(tweetDefined); //INSERT NEW TWEET AT CORRECT POSITION
+            sinceID = tweetDefined.getUid();
+            super.setSinceID(sinceID);
+        }
+
         return;
     }
 
